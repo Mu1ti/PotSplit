@@ -1,0 +1,249 @@
+﻿<Controls:MetroWindow
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:Collections="clr-namespace:System.Collections;assembly=mscorlib" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="MainFrm" x:Class="PotSplit.MainWindow"
+                      Title="~(￣▽￣)~ PotSplit ~(￣▽￣)~"
+                      Height="600"
+                      Width="937" ResizeMode="NoResize" ShowIconOnTitleBar="True" Closed="MainFrm_Closed" WindowStartupLocation="CenterScreen">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="ShowBroadCastButton" Content="송출화면" Click="ShowBroadCastButton_Click" />
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Controls:MetroAnimatedTabControl x:Name="MainTab" Controls:TabControlHelper.IsUnderlined="True" Margin="0,0,0,29">
+            <TabItem Header="   전자성대 설정" Width="232" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <Grid>
+                    <TabControl Controls:TabControlHelper.IsUnderlined="True" TabStripPlacement="Left">
+                        <TabItem Header="일반 설정" Margin="0,0,-52,0">
+                            <Grid>
+                                <Controls:ToggleSwitch x:Name="TTS_Enable_Switch" Content="전자성대 활성화" FontSize="26.667" Margin="10,10,450,0" Height="39" VerticalAlignment="Top" IsCheckedChanged="TTS_Enable_Switch_IsCheckedChanged" IsChecked="True" />
+                                <Label Content="현재 대본 -" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" FontSize="26.667" FontWeight="Bold"/>
+                                <Button x:Name="TTS_Preview_Button" Content="미리듣기" HorizontalAlignment="Left" Margin="12,397,0,0" VerticalAlignment="Top" Width="717" Height="87" FontFamily="Malgun Gothic" FontSize="26.667" Click="TTS_Preview_Button_Click"/>
+                                <Label x:Name="TTS_Information_Label1" Content="" HorizontalAlignment="Left" Margin="250,91,0,0" VerticalAlignment="Top" FontSize="26.667"/>
+                                <Controls:ToggleSwitch x:Name="TTS_Effect_Sound" Content="읽기 전 재생" FontSize="26.667" Margin="10,60,450,0" Height="39" VerticalAlignment="Top" IsCheckedChanged="TTS_Effect_Sound_IsCheckedChanged" />
+                                <ComboBox x:Name="TTS_Effect_Sound_Combo" HorizontalAlignment="Left" Margin="307,68,0,0" VerticalAlignment="Top" Width="360" SelectionChanged="TTS_Effect_Sound_Combo_SelectionChanged"/>
+                                <Button x:Name="TTS_Effect_Find" Content="추가" HorizontalAlignment="Left" Margin="672,68,0,0" VerticalAlignment="Top" Width="57" Click="TTS_Effect_Find_Click"/>
+                                <TextBlock x:Name="textBlock" Text="{Binding Text, ElementName=TTS_Content_Text}" TextWrapping="WrapWithOverflow"  Margin="12,230,10,102" FontSize="26.667"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="재생 조건" Margin="0,0,-52,0">
+                            <Grid>
+                                <Controls:ToggleSwitch x:Name="TTS_Min_Switch" Content="최소금액" FontSize="26.667" Margin="10,10,518,0" Height="41" VerticalAlignment="Top" IsCheckedChanged="TTS_Condition_EnableChange" />
+                                <TextBox x:Name="TTS_Min_Text" Controls:TextBoxHelper.Watermark="금액을 정해주세요." Controls:TextBoxHelper.ClearTextButton="True" FontSize="26.667" Margin="226,10,10,0" Height="41" VerticalAlignment="Top" TextChanged="TTS_Condition_TextChange" PreviewTextInput="OnlyDigits" />
+                                <Controls:ToggleSwitch x:Name="TTS_Max_Switch" Content="최대금액" FontSize="26.667" Margin="10,58,518,0" Height="44" VerticalAlignment="Top" IsCheckedChanged="TTS_Condition_EnableChange" />
+                                <TextBox x:Name="TTS_Max_Text" Controls:TextBoxHelper.Watermark="금액을 정해주세요." Controls:TextBoxHelper.ClearTextButton="True" Margin="226,56,10,0" FontSize="26.667" Height="44" VerticalAlignment="Top" TextChanged="TTS_Condition_TextChange" PreviewTextInput="OnlyDigits" />
+                                <Controls:ToggleSwitch x:Name="TTS_Filter_Switch" Content="철태 여부" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" FontSize="26.667" Width="216" IsCheckedChanged="TTS_Filter_IsCheckedChanged" />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="전자성대 대본">
+                            <Grid>
+                                <Controls:ToggleSwitch x:Name="TTS_Content_Switch" Content="대본대로 읽기" Margin="12,14,426,433" FontSize="26.667" IsCheckedChanged="TTS_Content_Switch_IsCheckedChanged" />
+                                <TextBox x:Name="TTS_Content_Text" Controls:TextBoxHelper.Watermark="재생할 메세지를 작성해 주세요" Controls:TextBoxHelper.ClearTextButton="True" Margin="318,10,10,385" FontSize="26.667" TextChanged="TTS_Content_Text_TextChanged" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" />
+                                <Label Content="사용 가능한 태그 -&#xA;&#xA;{팟수} = 후원한 사람의 대화명&#xA;{메세지} = 후원시 작성한 메세지&#xA;{금액} = 후원받은 금액&#xA;{담팟금액} = 다음팟 환율 환산!" HorizontalAlignment="Left" Margin="12,114,0,0" VerticalAlignment="Top" FontSize="26.667" Height="278" Width="717"/>
+                                <Button x:Name="TTS_Preview_Content_Button" Content="미리듣기" HorizontalAlignment="Left" Margin="12,397,0,0" VerticalAlignment="Top" Width="717" Height="87" FontFamily="Malgun Gothic" FontSize="26.667" Click="TTS_Preview_Button_Click"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="전자성대 설정">
+                            <Grid>
+                                <Label Content="구글에서 제공하는 전자성대 입니다." HorizontalAlignment="Left" Margin="144,14,0,0" VerticalAlignment="Top" Height="43" Width="540" FontSize="26.667"/>
+                                <Label Content="MS에서 제공하는 전자성대 입니다." HorizontalAlignment="Left" Margin="144,83,0,0" VerticalAlignment="Top" Height="43" Width="540" FontSize="26.667"/>
+                                <Label Content="누가 읽을지 모르는 랜덤읽기 입니다. " HorizontalAlignment="Left" Margin="144,163,0,0" VerticalAlignment="Top" Height="43" Width="540" FontSize="26.667"/>
+                                <RadioButton x:Name="TTS_Voice_Google" Content="구그리" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Height="43" Width="145" FontSize="26.667" FontWeight="Bold" Checked="TTS_Voice_Changed" IsChecked="True"/>
+                                <RadioButton x:Name="TTS_Voice_Heami" Content="혜미" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="43" Width="145" FontSize="26.667" FontWeight="Bold" Checked="TTS_Voice_Changed"/>
+                                <RadioButton x:Name="TTS_Voice_Randome" Content="스까읽기" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" Height="43" Width="145" FontSize="26.667" FontWeight="Bold" Checked="TTS_Voice_Changed"/>
+
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header=" 후원 메세지 설정" Width="233" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <Grid>
+                    <TabControl Controls:TabControlHelper.IsUnderlined="True" TabStripPlacement="Left">
+                        <TabItem Header="일반 설정" Margin="0,0,-44,0">
+                            <Grid>
+                                <Controls:ToggleSwitch x:Name="FDM_Enable_Switch" Content="후원 메세지 띄우기" Margin="10,10,446,434" FontSize="26.667" IsCheckedChanged="FDM_Enable_Switch_IsCheckedChanged" />
+                                <Label Content="후원 관련 태그 -&#xA;&#xA;{팟수} - 후원한 사람의 닉네임&#xA;{메세지} - 후원시 작성한 메세지&#xA;{금액} - 후원한 금액&#xA;{담팟금액} - 다음팟 환율 환산!&#xA;&#xA;{본문} - 일반적인 내용에 특성 추가시" Margin="10,123,383,92" FontSize="21.333"/>
+                                <Button x:Name="FDM_Get_ColorCode_Button" Content="색상코드 알아내기" HorizontalAlignment="Left" Margin="10,407,0,0" VerticalAlignment="Top" Width="375" Height="77" FontSize="26.667" Click="FDM_Get_ColorCode_Button_Click"/>
+                                <Button x:Name="FDM_Get_Font_Button" Content="사용 가능한 폰트 보기" HorizontalAlignment="Left" Margin="390,407,0,0" VerticalAlignment="Top" Width="375" Height="77" FontSize="26.667" Click="FDM_Get_Font_Button_Click"/>
+                                <TextBox x:Name="FDM_Content_Text" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="후원시 띄울 메세지를 입력하세요" Height="108" Margin="327,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="26.667" TextChanged="FDM_Content_Text_TextChanged"/>
+                                <Label Content="해당 태그에 대한 특성 추가-&#xA;&#xA;{태그,  색상코드, 폰트이름, 글씨 크기}&#xA;&#xA;이외 태그 -&#xA;&#xA;&lt;Img&gt; 태그 등의 html 태그삽입이&#xD;&#xA;가능합니다. 가령 예를들어,&#xD;&#xA;&lt;br /&gt;는 줄내림입니다 :)" Margin="381,123,10,92" FontSize="21.333"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="메세지 조건" Margin="0,0,-17,0">
+                            <Grid>
+                                <Controls:ToggleSwitch x:Name="FDM_Min_Switch" Content="최소금액" FontSize="26.667" Margin="10,10,544,0" Height="41" VerticalAlignment="Top" IsCheckedChanged="FDM_Min_Switch_IsCheckedChanged" />
+                                <TextBox x:Name="FDM_Min_Text" Controls:TextBoxHelper.Watermark="금액을 정해주세요." Controls:TextBoxHelper.ClearTextButton="True" FontSize="26.667" Margin="226,10,10,0" Height="41" VerticalAlignment="Top" PreviewTextInput="OnlyDigits" TextChanged="FDM_Min_Text_TextChanged" />
+                                <Controls:ToggleSwitch x:Name="FDM_Max_Switch" Content="최대금액" FontSize="26.667" Margin="10,56,544,0" Height="44" VerticalAlignment="Top" IsCheckedChanged="FDM_Max_Switch_IsCheckedChanged"/>
+                                <TextBox x:Name="FDM_Max_Text" Controls:TextBoxHelper.Watermark="금액을 정해주세요." Controls:TextBoxHelper.ClearTextButton="True" Margin="226,56,10,0" FontSize="26.667" Height="44" VerticalAlignment="Top" PreviewTextInput="OnlyDigits" TextChanged="FDM_Max_Text_TextChanged" />
+                                <Controls:ToggleSwitch x:Name="FDM_Filter_Switch" Content="철태 여부" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" FontSize="26.667" Width="216" IsCheckedChanged="FDM_Filter_IsCheckedChanged" />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="메세지 효과" Margin="0,0,-16,0">
+                            <Grid>
+                                <Expander x:Name="FDM_Preview_Expander" Header="짜잔 테스트" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Height="429" Width="752" Expanded="FDM_Preview_Expander_Expanded" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                    <Grid Background="#FFE5E5E5">
+                                        <WebBrowser x:Name="FDM_Preview_WebBrowser" HorizontalAlignment="Left" Height="389" VerticalAlignment="Top" Width="739"/>
+                                    </Grid>
+                                </Expander>
+                                <ComboBox x:Name="FDM_In_Effect_ComboBox" HorizontalAlignment="Left" Margin="43,16,0,0" VerticalAlignment="Top" Width="181" Height="27" FontSize="20" Controls:TextBoxHelper.Watermark="메세지 띄울 때" SelectionChanged="FDM_In_Effect_ComboBox_SelectionChanged">
+                                    <ComboBoxItem Content="지정 안함" x:Name="FDM_Effect_NoneIn" />
+                                    <ComboBoxItem Content="바운스 인" x:Name="FDM_Effect_bounceIn" />
+                                    <ComboBoxItem Content="좌로 바운스 인" x:Name="FDM_Effect_bounceInLeft" />
+                                    <ComboBoxItem Content="우로 바운스 인" x:Name="FDM_Effect_bounceInRight" />
+                                    <ComboBoxItem Content="위로 바운스 인" x:Name="FDM_Effect_bounceInUp" />
+                                    <ComboBoxItem Content="밑으로 바운스 인" x:Name="FDM_Effect_bounceInDown" />
+                                    <ComboBoxItem Content="페이드 인" x:Name="FDM_Effect_fadeIn" />
+                                    <ComboBoxItem Content="좌로 페이드 인" x:Name="FDM_Effect_fadeInLeft" />
+                                    <ComboBoxItem Content="우로 페이드 인" x:Name="FDM_Effect_fadeInRight" />
+                                    <ComboBoxItem Content="위로 페이드 인" x:Name="FDM_Effect_fadeInUp" />
+                                    <ComboBoxItem Content="밑으로 페이드 인" x:Name="FDM_Effect_fadeInDown" />
+                                    <ComboBoxItem Content="크게 좌로 페이드 인" x:Name="FDM_Effect_fadeInLeftBig" />
+                                    <ComboBoxItem Content="크게 우로 페이드 인" x:Name="FDM_Effect_fadeInRightBig" />
+                                    <ComboBoxItem Content="크게 위로 페이드 인" x:Name="FDM_Effect_fadeInUpBig" />
+                                    <ComboBoxItem Content="크게 밑으로 페이드 인" x:Name="FDM_Effect_fadeInDownBig" />
+                                    <ComboBoxItem Content="로테이트 인" x:Name="FDM_Effect_rotateIn" />
+                                    <ComboBoxItem Content="좌하단으로 로테이트 인" x:Name="FDM_Effect_rotateInDownLeft" />
+                                    <ComboBoxItem Content="우하단으로 로테이트 인" x:Name="FDM_Effect_rotateInDownRight" />
+                                    <ComboBoxItem Content="좌상단으로 로테이트 인" x:Name="FDM_Effect_rotateInUpLeft" />
+                                    <ComboBoxItem Content="우상단으로 로테이트 인" x:Name="FDM_Effect_rotateInUpRight" />
+                                    <ComboBoxItem Content="줌 인" x:Name="FDM_Effect_zoomIn" />
+                                    <ComboBoxItem Content="좌로 줌 인" x:Name="FDM_Effect_zoomInLeft" />
+                                    <ComboBoxItem Content="우로 줌 인" x:Name="FDM_Effect_zoomInRight" />
+                                    <ComboBoxItem Content="위로 줌 인" x:Name="FDM_Effect_zoomInUp" />
+                                    <ComboBoxItem Content="밑으로 줌 인" x:Name="FDM_Effect_zoomInDown" />
+                                    <ComboBoxItem Content="좌로 슬라이드 인" x:Name="FDM_Effect_slideInLeft" />
+                                    <ComboBoxItem Content="우로 슬라이드 인" x:Name="FDM_Effect_slideInRight" />
+                                    <ComboBoxItem Content="위로 슬라이드 인" x:Name="FDM_Effect_slideInUp" />
+                                    <ComboBoxItem Content="밑으로 슬라이드 인" x:Name="FDM_Effect_slideInDown" />
+                                    <ComboBoxItem Content="가로로 플립 인" x:Name="FDM_Effect_flipInX" />
+                                    <ComboBoxItem Content="세로로 플립 인" x:Name="FDM_Effect_flipInY" />
+                                    <ComboBoxItem Content="라이트스피드 인" x:Name="FDM_Effect_lightSpeedIn" />
+                                    <ComboBoxItem Content="롤 인" x:Name="FDM_Effect_rollIn" />
+                                </ComboBox>
+                                <ComboBox x:Name="FDM_Out_Effect_ComboBox" HorizontalAlignment="Left" Margin="301,16,0,0" VerticalAlignment="Top" Width="181" Height="27" FontSize="20" Controls:TextBoxHelper.Watermark="메세지 닫힐 때" SelectionChanged="FDM_Out_Effect_ComboBox_SelectionChanged">
+                                    <ComboBoxItem x:Name="FDM_Effect_NoneOut" Content="지정 안함" />
+                                    <ComboBoxItem x:Name="FDM_Effect_bounceOut" Content="바운스 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_bounceOutLeft" Content="좌로 바운스 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_bounceOutRight" Content="우로 바운스 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_bounceOutUp" Content="위로 바운스 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_bounceOutDown" Content="밑으로 바운스 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_fadeOut" Content="페이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_fadeOutLeft" Content="좌로 페이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_fadeOutRight" Content="우로 페이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_fadeOutUp" Content="위로 페이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_fadeOutDown" Content="밑으로 페이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_fadeOutLeftBig" Content="크게 좌로 페이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_fadeOutRightBig" Content="크게 우로 페이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_fadeOutUpBig" Content="크게 위로 페이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_fadeOutDownBig" Content="크게 밑으로 페이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_rotateOut" Content="로테이트 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_rotateOutDownLeft" Content="좌하단으로 로테이트 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_rotateOutDownRight" Content="우하단으로 로테이트 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_rotateOutUpLeft" Content="좌상단으로 로테이트 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_rotateOutUpRight" Content="우상단으로 로테이트 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_zoomOut" Content="줌 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_zoomOutDown" Content="아래로 줌아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_zoomOutLeft" Content="좌로 줌 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_zoomOutRight" Content="우로 줌 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_zoomOutUp" Content="위로 줌 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_slideOutDown" Content="좌로 슬라이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_slideOutLeft" Content="밑으로 슬라이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_slideOutRight" Content="우로 슬라이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_slideOutUp" Content="위로 슬라이드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_flipOutX" Content="가로로 플립 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_flipOutY" Content="세로로 플립 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_lightSpeedOut" Content="라이트스피드 아웃" />
+                                    <ComboBoxItem x:Name="FDM_Effect_rollOut" Content="롤 아웃" />
+                                </ComboBox>
+                                <ComboBox x:Name="FDM_Effect_ComboBox" HorizontalAlignment="Left" Margin="574,16,0,0" VerticalAlignment="Top" Width="181" Height="27" FontSize="20" Controls:TextBoxHelper.Watermark="메세지 효과" SelectionChanged="FDM_Effect_ComboBox_SelectionChanged">
+                                    <ComboBoxItem x:Name="FDM_Effect_None" Content="지정 안함" />
+                                    <ComboBoxItem x:Name="FDM_Effect_bounce" Content="바운스" />
+                                    <ComboBoxItem x:Name="FDM_Effect_flash" Content="플래시" />
+                                    <ComboBoxItem x:Name="FDM_Effect_pulse" Content="펄스" />
+                                    <ComboBoxItem x:Name="FDM_Effect_rubberBand" Content="러버밴드" />
+                                    <ComboBoxItem x:Name="FDM_Effect_shake" Content="쉐이크" />
+                                    <ComboBoxItem x:Name="FDM_Effect_headShake" Content="헤드쉐이크" />
+                                    <ComboBoxItem x:Name="FDM_Effect_swing" Content="스윙" />
+                                    <ComboBoxItem x:Name="FDM_Effect_tada" Content="짜잔" />
+                                    <ComboBoxItem x:Name="FDM_Effect_wobble" Content="우블" />
+                                    <ComboBoxItem x:Name="FDM_Effect_jello" Content="젤로" />
+                                    <ComboBoxItem x:Name="FDM_Effect_hinge" Content="힌지" />
+                                </ComboBox>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header=" 유튜브 재생 설정" Width="233" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <Grid>
+                    <TabControl Controls:TabControlHelper.IsUnderlined="True" TabStripPlacement="Left">
+                        <TabItem Header="일반 설정">
+                            <Grid>
+                                <Controls:ToggleSwitch x:Name="Youtube_Enable_Switch" Content="유튜브 자동 재생 활성화" FontSize="26.667" Margin="28,33,392,0" Height="39" VerticalAlignment="Top" IsChecked="True" IsCheckedChanged="Youtube_Enable_Switch_IsCheckedChanged" />
+                                <Controls:ToggleSwitch x:Name="Youtube_Next_Switch" Content="다음 영상 자동재생" FontSize="26.667" Margin="28,129,392,0" Height="38" VerticalAlignment="Top" IsCheckedChanged="Youtube_Next_Switch_IsCheckedChanged" />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="재생 조건">
+                            <Grid>
+                                <Controls:ToggleSwitch x:Name="Youtube_Min_Switch" Content="최소금액" FontSize="26.667" Margin="10,10,571,0" Height="41" VerticalAlignment="Top" IsCheckedChanged="Youtube_Min_Switch_IsCheckedChanged" />
+                                <TextBox x:Name="Youtube_Min_Text" Controls:TextBoxHelper.Watermark="금액을 정해주세요." Controls:TextBoxHelper.ClearTextButton="True" FontSize="26.667" Margin="226,10,10,0" Height="41" VerticalAlignment="Top" PreviewTextInput="OnlyDigits" TextChanged="Youtube_Min_Text_TextChanged" />
+                                <Controls:ToggleSwitch x:Name="Youtube_Max_Switch" Content="최대금액" FontSize="26.667" Margin="10,56,571,0" Height="44" VerticalAlignment="Top" IsCheckedChanged="Youtube_Max_Switch_IsCheckedChanged"/>
+                                <TextBox x:Name="Youtube_Max_Text" Controls:TextBoxHelper.Watermark="금액을 정해주세요." Controls:TextBoxHelper.ClearTextButton="True" Margin="226,56,10,0" FontSize="26.667" Height="44" VerticalAlignment="Top" PreviewTextInput="OnlyDigits" TextChanged="Youtube_Max_Text_TextChanged" />
+                                <Controls:ToggleSwitch x:Name="Youtube_Filter_Switch" Content="철태 여부" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" FontSize="26.667" Width="216" IsCheckedChanged="Youtube_Filter_IsCheckedChanged" />
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="   후원 철태 설정" Width="233" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <Grid>
+                    <TabControl Controls:TabControlHelper.IsUnderlined="True" TabStripPlacement="Left">
+                        <TabItem Header="단어 철태" Margin="0,0,-28,0">
+                            <Grid>
+                                <ListView x:Name="Filter_Message_ListView" Height="440" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="26.667" MouseDoubleClick="Filter_Message_ListView_MouseDoubleClick">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="                          필터링 하고 있는 단어" Width="808"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <TextBox x:Name="Filter_Message_Text" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="철태를 내릴 메세지 내용을 작성해 주세요" FontSize="26.667" Margin="10,450,80,0" KeyDown="Filter_Message_Text_KeyDown" />
+                                <Button x:Name="Filter_Message_Button" Content="추가" HorizontalAlignment="Left" Margin="693,450,0,0" VerticalAlignment="Top" Width="68" Height="44" FontSize="26.667" FontWeight="Normal" Click="Filter_Message_Button_Click"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="팟수 철태" Margin="0,0,-28,0">
+                            <Grid>
+                                <ListView x:Name="Filter_Potsu_ListView" Height="440" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="26.667" MouseDoubleClick="Filter_Potsu_ListView_MouseDoubleClick">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="                             필터링 하고 있는 팟수" Width="808"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <TextBox x:Name="Filter_Potsu_Text" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="철태를 내릴 팟수를 작성해 주세요" FontSize="26.667" Margin="10,450,80,0" KeyDown="Filter_Potsu_Text_KeyDown" />
+                                <Button x:Name="Filter_Potsu_Button" Content="추가" HorizontalAlignment="Left" Margin="693,450,0,0" VerticalAlignment="Top" Width="68" Height="44" FontSize="26.667" FontWeight="Normal" Click="Filter_Potsu_Button_Click"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="유튜브 철태">
+                            <Grid>
+                                <ListView x:Name="Filter_Youtube_ListView" Height="440" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="26.667" MouseDoubleClick="Filter_Youtube_ListView_MouseDoubleClick">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="                       필터링 하고 있는 유튜브 링크" Width="808"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <TextBox x:Name="Filter_Youtube_Text" Controls:TextBoxHelper.ClearTextButton="True" Controls:TextBoxHelper.Watermark="철태를 내릴 유튜브 링크를 작성해 주세요" FontSize="26.667" Margin="10,450,80,0" KeyDown="Filter_Youtube_Text_KeyDown" />
+                                <Button x:Name="Filter_Youtube_Button" Content="추가" HorizontalAlignment="Left" Margin="693,450,0,0" VerticalAlignment="Top" Width="68" Height="44" FontSize="26.667" FontWeight="Normal"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+        </Controls:MetroAnimatedTabControl>
+        <StatusBar Height="29" Margin="0,542,-26,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1020"/>
+    </Grid>
+</Controls:MetroWindow>
