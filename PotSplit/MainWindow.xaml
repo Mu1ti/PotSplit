@@ -16,7 +16,7 @@
             <TabItem Header="   전자성대 설정" Width="232" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                 <Grid>
                     <TabControl Controls:TabControlHelper.IsUnderlined="True" TabStripPlacement="Left">
-                        <TabItem Header="일반 설정" Margin="0,0,-52,0">
+                        <TabItem Header="일반 설정     " Margin="0,0,-6,0">
                             <Grid>
                                 <Controls:ToggleSwitch x:Name="TTS_Enable_Switch" Content="전자성대 활성화" FontSize="26.667" Margin="10,10,450,0" Height="39" VerticalAlignment="Top" IsCheckedChanged="TTS_Enable_Switch_IsCheckedChanged" IsChecked="True" />
                                 <Label Content="현재 대본 -" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" FontSize="26.667" FontWeight="Bold"/>
@@ -28,7 +28,7 @@
                                 <TextBlock x:Name="textBlock" Text="{Binding Text, ElementName=TTS_Content_Text}" TextWrapping="WrapWithOverflow"  Margin="12,230,10,102" FontSize="26.667"/>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="재생 조건" Margin="0,0,-52,0">
+                        <TabItem Header="재생 조건     " Margin="0,0,-6,0">
                             <Grid>
                                 <Controls:ToggleSwitch x:Name="TTS_Min_Switch" Content="최소금액" FontSize="26.667" Margin="10,10,518,0" Height="41" VerticalAlignment="Top" IsCheckedChanged="TTS_Condition_EnableChange" />
                                 <TextBox x:Name="TTS_Min_Text" Controls:TextBoxHelper.Watermark="금액을 정해주세요." Controls:TextBoxHelper.ClearTextButton="True" FontSize="26.667" Margin="226,10,10,0" Height="41" VerticalAlignment="Top" TextChanged="TTS_Condition_TextChange" PreviewTextInput="OnlyDigits" />
