@@ -131,11 +131,11 @@ namespace PotSplit
                                 }
                                 else if (Tags.Length == 3)
                                 {
-                                    Return = "<font color='" + Tags[1].Trim() + "' font='" + Tags[2].Trim() + "'>" + Return.Replace(BodyTag, "") + "</font>";
+                                    Return = "<font color='" + Tags[1].Trim() + "' face='" + Tags[2].Trim() + "'>" + Return.Replace(BodyTag, "") + "</font>";
                                 }
                                 else if (Tags.Length == 4)
                                 {
-                                    Return = "<font color='" + Tags[1].Trim() + "' font='" + Tags[2].Trim() + "' size='" + Tags[3].Trim() + "'>" + Return.Replace(BodyTag, "") + "</font>";
+                                    Return = "<font color='" + Tags[1].Trim() + "' face='" + Tags[2].Trim() + "' size='" + Tags[3].Trim() + "'>" + Return.Replace(BodyTag, "") + "</font>";
                                 }
                                 else Return = Return.Replace(BodyTag, "");
                             }
@@ -187,11 +187,11 @@ namespace PotSplit
                         }
                         else if (Tags.Length == 3)
                         {
-                            Return = Return.Replace(ThisTag, "<font color='" + Tags[1].Trim() + "'font='" + Tags[2].Trim() + "'>" + Content.Trim() + "</font>");
+                            Return = Return.Replace(ThisTag, "<font color='" + Tags[1].Trim() + "'face='" + Tags[2].Trim() + "'>" + Content.Trim() + "</font>");
                         }
                         else if (Tags.Length == 4)
                         {
-                            Return = Return.Replace(ThisTag, "<font color='" + Tags[1].Trim() + "'font='" + Tags[2].Trim() + "' size='" + Tags[3].Trim() + "'>" + Content.Trim() + "</font>");
+                            Return = Return.Replace(ThisTag, "<font color='" + Tags[1].Trim() + "'face='" + Tags[2].Trim() + "' size='" + Tags[3].Trim() + "'>" + Content.Trim() + "</font>");
                         }
                         else Return = Return.Replace(ThisTag, "");
                     }

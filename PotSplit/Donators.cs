@@ -23,7 +23,7 @@ namespace PotSplit
             MainThread.IsBackground = true;
         }
         //************************************************************
-        //*                  DetectBroadCastChatRoom                 *
+        //*                Donators thread functions                 *
         //************************************************************
         public void StartDetect()
         {
