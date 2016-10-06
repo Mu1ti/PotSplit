@@ -2,9 +2,13 @@
 
 Daumpot PotPlayer Broadcast Helper
 
-방송을 키고 켜주시면 됩니다.
+방송을 킨 후에 켜주시면 됩니다.
 
-윈도우7 이상, .NET Framework 4.5 이상이 설치되어 있고, x86(32bit)이상인 컴퓨터환경에서 동작합니다.
+본 프로그램은 다음과 같은 환경 이상에서만 동작이 가능합니다.
+
+ - 윈도우7 x86(32bit) 이상
+ - NET Framework 4.5 이상이 설치됨
+ - Visual Studio 2013용 Visual C++ 재배포 가능 패키지가 설치되어있음
 
 본 프로그램은 오픈소스로써 누구나 자유롭게 프로그램 소스를 열람 가능합니다. (https://github.com/Mu1ti/PotSplit)
 
