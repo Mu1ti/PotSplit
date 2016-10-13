@@ -16,6 +16,10 @@ Daumpot PotPlayer Broadcast Helper
 
 프로그램에 대한 버그헌팅 및 리버싱등의 행위는 자유롭게 하셔도 됩니다.
 
+
+프로그램 사용 및 팁에 대한 다음 문서에서 읽어보실 수 있습니다. http://github.com/Mu1ti/PotSplit/blob/master/Tip%20And%20Guide
+
+
 본 프로그램은 다음 오픈소스들의 라이선스를 따릅니다.
 
 CefSharp.WPF(https://raw.githubusercontent.com/cefsharp/CefSharp/master/LICENSE)
